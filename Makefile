@@ -3,7 +3,7 @@ CC := $(if $(shell command -v clang 2> /dev/null),clang,gcc)
 # Set default compiler flags
 CFLAGS := -Wall -Wextra -pedantic
 # For release builds
-RELEASE_FLAGS = -O2
+RELEASE_FLAGS := -O2
 
 # Determine the OS, and set the executable extension accordingly
 ifeq ($(OS),Windows_NT)
