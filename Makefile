@@ -2,33 +2,19 @@
 CC := $(if $(shell command -v clang 2> /dev/null),clang,gcc)
 CFLAGS := -Wall -Wextra -pedantic
 
-ifdef TARGET
-    # If defined, print its value
-    $(info Building $(TARGET)...)
-else
-    # If not defined, print a message
-    $(info TARGET is not defined)
-endif
+RELEASE_FLAGS = -O2
+DEBUG_OUT = debug.out
+RELEASE_OUT = %.out
 
-# Determine the platform
-ifeq ($(OS),Windows_NT)
-	PLATFORM := windows
-	EXECUTABLE_EXT := .exe
-else
-	PLATFORM := linux
-	EXECUTABLE_EXT := .out
-endif
+.PHONY: all
+all:
+	@echo "Error: no target specified. Specify a .c file name without extension. For example, use 'make array-binary-search' for array-binary-search.c"
+	@exit 1
 
-# Default target
-all: $(TARGET)$(EXECUTABLE_EXT)
+%: %.c
+	$(CC) $(CFLAGS) $< -o $(DEBUG_OUT)
 
-$(TARGET)$(EXECUTABLE_EXT): $(TARGET).c
-	$(CC) $(CFLAGS) -o $@ $<
-
-run: $(TARGET)$(EXECUTABLE_EXT)
-	./$(TARGET)$(EXECUTABLE_EXT)
-
-clean:
-	rm -f *$(EXECUTABLE_EXT)
+release-%: %.c
+	$(CC) $(CFLAGS) $(RELEASE_FLAGS) $< -o $(RELEASE_OUT)
 
 .PHONY: all run clean
