@@ -36,6 +36,13 @@ Compiling the C code in this repository is straightforward. You can use a C comp
 
 We welcome contributions from anyone interested in numerical methods and C programming. If you'd like to contribute, please make sure to read our [CONTRIBUTING.md](CONTRIBUTING.md) file to understand our guidelines and expectations. Feel free to submit issues, pull requests, or engage in discussions.
 
+### Reporting Bugs
+
+If you encounter a bug, please open an issue on the GitHub repository. When reporting bugs, please include a detailed description of the issue, steps to reproduce it, and any relevant code snippets or error messages.
+
+### Suggesting Enhancements
+
+We welcome suggestions for new features or improvements. Open an issue on GitHub, provide a clear and concise description of your enhancement idea, and discuss it with the community.
 
 ## License
 
