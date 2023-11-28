@@ -1,34 +1,39 @@
-# Determine the preferred compiler
+# Determine the compiler, Clang preferred
 CC := $(if $(shell command -v clang 2> /dev/null),clang,gcc)
+# Set default compiler flags
 CFLAGS := -Wall -Wextra -pedantic
+# For release builds
+RELEASE_FLAGS := -O2
 
-ifdef TARGET
-    # If defined, print its value
-    $(info Building $(TARGET)...)
-else
-    # If not defined, print a message
-    $(info TARGET is not defined)
-endif
-
-# Determine the platform
+# Determine the OS, and set the executable extension accordingly
 ifeq ($(OS),Windows_NT)
-	PLATFORM := windows
-	EXECUTABLE_EXT := .exe
+    EXE_EXT := exe
 else
-	PLATFORM := linux
-	EXECUTABLE_EXT := .out
+    EXE_EXT := out
 endif
 
-# Default target
-all: $(TARGET)$(EXECUTABLE_EXT)
+DEBUG_OUT := debug.$(EXE_EXT)
 
-$(TARGET)$(EXECUTABLE_EXT): $(TARGET).c
-	$(CC) $(CFLAGS) -o $@ $<
+.PHONY: all
+# Error if no target is specified
+all:
+	$(error "Error: no target specified. Specify a .c file name without extension. \
+	For example, use 'make array-binary-search' for array-binary-search.c")
+	@exit 1
 
-run: $(TARGET)$(EXECUTABLE_EXT)
-	./$(TARGET)$(EXECUTABLE_EXT)
+# make hello-world, generates a debug build (debug.out) from hello-world.c
+%: %.c
+	$(info Generating debug build for $<...)
+	$(CC) $(CFLAGS) $< -o $(DEBUG_OUT)
 
+# make release-hello-world, generates a release build (hello-world.out) from hello-world.c
+release-%: %.c
+	$(info Generating release build for $<...)
+	$(CC) $(CFLAGS) $(RELEASE_FLAGS) $< -o $(basename $<).$(EXE_EXT)
+
+# make clean, removes all executables in the current directory
 clean:
-	rm -f *$(EXECUTABLE_EXT)
+	$(info Cleaning up the workspace...)
+	rm -f *.$(EXE_EXT)
 
 .PHONY: all run clean

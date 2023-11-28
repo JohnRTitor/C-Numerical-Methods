@@ -22,4 +22,8 @@ tasks.json
 launch.json
 .vscode
 
+# Ignore executables
+*.exe
+*.out
+
 # Ignore files larger than 100M
