@@ -15,7 +15,7 @@ Before you start, please take a moment to review the guidelines outlined in this
 ## Getting Started
 
 GNU/Linux enviornment is preferred. However it is possible to setup C development enviornment in Windows using mingw-w64 or MSYS 2.
-Install git, gcc/clang in the system. For debian/Ubuntu, install the `build-essential` package that bundles all the relevant packages.
+Install Git, GCC/Clang in the system. For debian/Ubuntu, install the `build-essential` package that bundles all the relevant packages.
 
 1. Fork the repository to your GitHub account.
 2. Clone the forked repository to your local machine:
