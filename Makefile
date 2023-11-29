@@ -1,7 +1,9 @@
 # Determine the compiler, Clang preferred
 CC := $(if $(shell command -v clang 2> /dev/null),clang,gcc)
 # Set default compiler flags
-CFLAGS := -Wall -Wextra -pedantic
+CFLAGS := -Wall -Wextra -pedantic -std=c17
+# Set linker flags
+LDLIBS=--lm -ldl -llog -lz
 # For release builds
 RELEASE_FLAGS := -O2
 
@@ -24,12 +26,12 @@ all:
 # make hello-world, generates a debug build (debug.out) from hello-world.c
 %: %.c
 	$(info Generating debug build for $<...)
-	$(CC) $(CFLAGS) $< -o $(DEBUG_OUT)
+	$(CC) $(CFLAGS) $(LDLIBS) $< -o $(DEBUG_OUT)
 
 # make release-hello-world, generates a release build (hello-world.out) from hello-world.c
 release-%: %.c
 	$(info Generating release build for $<...)
-	$(CC) $(CFLAGS) $(RELEASE_FLAGS) $< -o $(basename $<).$(EXE_EXT)
+	$(CC) $(CFLAGS) $(LDLIBS) $(RELEASE_FLAGS) $< -o $(basename $<).$(EXE_EXT)
 
 # make clean, removes all executables in the current directory
 clean:
