@@ -3,7 +3,7 @@ CC := $(if $(shell command -v clang 2> /dev/null),clang,gcc)
 # Set default compiler flags
 CFLAGS := -Wall -Wextra -pedantic -std=c17
 # Set linker flags
-LDLIBS=--lm -ldl -llog -lz
+LDLIBS := -lm -ldl -llog -lz
 # For release builds
 RELEASE_FLAGS := -O2
 
