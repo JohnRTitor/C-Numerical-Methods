@@ -3,7 +3,7 @@ CC := $(if $(shell command -v clang 2> /dev/null),clang,gcc)
 # Set default compiler flags
 CFLAGS := -Wall -Wextra -pedantic -std=c17
 # Set linker flags
-LDLIBS := -lm -ldl -llog -lz
+LDLIBS := -lm -ldl -lz
 # For release builds
 RELEASE_FLAGS := -O2
 
@@ -36,6 +36,6 @@ release-%: %.c
 # make clean, removes all executables in the current directory
 clean:
 	$(info Cleaning up the workspace...)
-	rm -f *.$(EXE_EXT)
+	rm -f *.$(EXE_EXT) */*.$(EXE_EXT)
 
 .PHONY: all run clean
