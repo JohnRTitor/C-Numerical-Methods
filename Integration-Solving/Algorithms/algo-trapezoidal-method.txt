@@ -1,16 +1,19 @@
                 Algorithm - Trapezoidal Method
 
-Input:- Lower bound of integration (a), Upper bound of integration (b), Number of subintervals (n), the function to be integrated (optional, or hard-coded)
+Input:- 
+    1. The bounds of integration [a, b]
+    2. The number of subintervals n
+    3. The function F(x)
 Output:- Value of the integral evaluated (result)
 Steps:-
 
 1: Start
-2: Print “Enter lower bound of integration: ”
-3: Read a
-4: Print “Enter upper bound of integration: ”
-5: Read b
-6: Print “Enter number of subintervals: ”
-7: Read n
+2: Print "Enter the interval [a, b]: "
+3: Read a, b
+4: Print “Enter number of subintervals: ”
+5: Read n
+6: Print "Enter the function F(x): "
+7: Read F(x)
 8: If n mod 2 = 1 OR n < 1 then
     8.1: Print “Number of subintervals must be non-negative even. ”
     8.2: Exit
