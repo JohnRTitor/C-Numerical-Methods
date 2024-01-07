@@ -1,71 +1,69 @@
 #include <stdio.h>
 #include <math.h>
 
-int sign (double x)
+#define MAX_ITERATION 100
+
+double FUNC (double x)
 {
-    if (x > 0)
-        return 1;
-    else if (x < 0)
-        return -1;
+    return x*x*x - 9*x + 1;
+}
+
+double bisectionMethod (double a, double b);
+void swap (double *p_x, double *p_y);
+
+int main ()
+{
+    double a, b, root;
+    printf("Enter the initial interval [a, b]: ");
+    scanf("%lf %lf", &a, &b);
+    
+    root = bisectionMethod(a, b);
+    if (!isnan(root))
+        printf("Root found at: %.4lf\n", root);
     else
-        return 0;
-}
-// Function for which we are finding the root
-double function(double x)
-{
-    return x * x - 4; // Change this function as needed
+        printf("Root not found in the [%.2lf, %.2lf] interval\n", a, b);
+
 }
 
-// Find initial interval [a, b] with sign change
-void findInitialInterval(double *a, double *b, double step)
-{
-    double x = *a;
-
-    while (function(x) * function(x + step) >= 0)
-    {
-        x += step;
-    }
-
-    *a = x;
-    *b = x + step;
-}
-
-// Bisection method implementation
-double bisection(double a, double b, double tol)
+double bisectionMethod (double a, double b)
 {
     double c;
 
-    while ((b - a) >= tol)
+    // Check if the interval is valid
+    if (FUNC(a) * FUNC(b) > 0)
     {
-        // Find middle point
+        printf("Invalid interval, no sign change of F(x) between interval bounds\n");
+        return NAN;
+    }
+    // Check if the interval bounds are the root
+    else if (FUNC(a) == 0)
+        return a;
+    else if (FUNC(b) == 0)
+        return b;
+
+    // Check and swap intervals if necessary
+    if (FUNC(a) > FUNC(b))
+        swap(&a, &b);
+    
+    for (int i = 0; i < MAX_ITERATION; i++)
+    {
         c = (a + b) / 2;
-
-        // Check if middle point is root
-        if (function(c) == 0.0)
-            break;
-
-        // Decide the side to repeat the steps
-        else if (function(c) * function(a) < 0)
+        // Check if the root is found, or if the interval is small enough
+        if (FUNC(c) == 0 || fabs(a - b) < 1e-6)
+            return c;
+        // there lies a root in the [a, c] interval
+        else if (FUNC(a) * FUNC(c) < 0)
             b = c;
+        // there lies a root in the [c, b] interval
         else
             a = c;
     }
-
-    return c;
+    return NAN;
 }
 
-int main() {
-    double a, b, tol, step;
-
-    // Set initial values for step and tolerance
-    step = 0.1;
-    tol = 0.00001;
-
-    // Find initial interval [a, b] with sign change
-    findInitialInterval(&a, &b, step);
-
-    // Call the bisection method and print the result
-    printf("Root: %lf\n", bisection(a, b, tol));
-
-    return 0;
+void swap (double *p_x, double *p_y)
+{
+    double temp = *p_x;
+    *p_x = *p_y;
+    *p_y = temp;
 }
