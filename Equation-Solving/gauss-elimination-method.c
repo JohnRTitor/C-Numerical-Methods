@@ -2,11 +2,11 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define size 10
+#define SIZE 10
 
 int main()
 {
-    float a[size][size], solution[size], ratio;
+    float a[SIZE][SIZE], solution[SIZE], ratio;
     int i, j, k, unknown;
     /* Inputs */
     /* 1. Reading number of unknowns */
