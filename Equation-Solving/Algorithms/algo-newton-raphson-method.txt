@@ -1,7 +1,7 @@
-           Algorithm-Gauss Elimination Method
+           Algorithm-Newton Raphson Method
 
 Input : A initial guess of the root.
-Output : Display the values of roots of the linear equations.
+Output : Display the value of root of the equation.
 
 Steps :
 
