@@ -6,26 +6,26 @@
 
 int main ()
 {
-    int x[MAX_SIZE], y[MAX_SIZE], S[MAX_SIZE];
-    int i, j;
-    int a, n;
-    double fA;
+    double x[MAX_SIZE], y[MAX_SIZE], S[MAX_SIZE];
+    int i, j, n;
+    double a, fA;
 
-    printf("Enter the values of x[i] and y[i]: (type -999 -999 to stop)");
+    printf("Enter the values of x[i] and y[i]: (type -999 -999 to stop) \n");
     i = 0;
     while (true)
     {
         printf("%d: ", i);
-        scanf("%d %d", &x[i], &y[i]);
+        scanf("%lf %lf", &x[i], &y[i]);
         if (x[i] == -999 && y[i] == -999)
         {
             n = i;
             break;
         }
+        i++;
     }
 
     printf("Enter the value of a: ");
-    scanf("%d", &a);
+    scanf("%lf", &a);
 
 
     for (i = 0; i <= n; i++)
@@ -46,7 +46,7 @@ int main ()
         fA += y[i] * S[i];
     }
 
-    printf("f(%d) = %lf\n", a, fA);
+    printf("f(%.3lf) = %lf\n", a, fA);
 
     return 0;
 }
