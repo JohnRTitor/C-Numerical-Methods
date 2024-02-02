@@ -16,6 +16,7 @@
 
 # Don't ignore LICENSE
 !LICENSE
+!.github/workflows
 
 # Ignore these files and folders explicitly
 tasks.json
