@@ -1,0 +1,43 @@
+            Algo - Newton Forward Interpolation
+
+Input: n - Number of observations/data points
+       x,y - One dimensional arrays for storing values of x and y respectively.
+       value - The value to be interpolated
+Output: Display the value of value after interpolation
+Data Structure: One dimensional arrays of elements
+
+Steps:
+
+1: Start
+2: Read n
+3: Read x[],y[]
+4: Read value
+5: calculate_backward_difference_table(y, n, b)
+6: result ← interpolate_backward(xValue, x[0], x[1] - x[0], n, b)
+7: Print result
+8: Stop
+
+            Procedure interpolate_backward(x,x0,h,n.b[][])
+
+1: Start Procedure
+2: result ← b[n-1][0]
+3: term ← (x-x0)/h
+4: For i = 1 to n-1 do
+    4.1: result ← result + (term*b[n-1][i])/interpolate_backward
+    4.2: term ← term*(term+1-i)/h
+5: EndFor
+6: Return result
+7: Stop Procedure
+
+            Procedure alculate_backward_difference_table(y,n,b[][])
+
+1: Start Procedure
+2: For i= 0 to n-1 do
+    2.1: b[i][0] ← y[i]
+3: EndFor
+4: For j=1 to n-1 do
+    4.1: For i = n-1 to j do
+        4.1.1: b[i][j] ← b[i][j-1] - b[i-1][j-1]
+    4.2: EndFor
+5: EndFor
+6: Stop Procedure
