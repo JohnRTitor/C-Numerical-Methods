@@ -1,0 +1,35 @@
+            Algo - Newton Forward Interpolation
+
+Input: n - Number of observations
+       ax,ay - One dimensional arrays for storing values of x and y respectively.
+       x - Value of x for which y is wanted.
+Output: Display the value of y for the given value of x
+Data Structure: One dimensional arrays of elements
+
+Steps:
+
+1: Start
+2: Read n,ax,ay,x
+3: h ← ax[1] - ax[0]
+4: For i = 0 to n-1 do
+    4,1: diff[i][i] ← ay[i+1] - ay[i]
+5: EndFor
+6: For j=2 to 4 do
+    6.1: For i=0 to n-1 do
+        6.1.1: diff[i][j] ← diff[i+1][j-1] - diff[i][j-1]
+    6.2: EndFor
+7: EndFor
+8: i ← 0
+9: While ax[i] < x do
+    9.1: i ← i + 1
+10: EndWhile
+11: i ← i - 1
+12: p ← (x - ax[i])/h
+13: yp ← ay[i]
+14: For k=1 to 4 do
+    14.1: nr ← nr*(p-k+1)
+    14.2: dr ← dr*k
+    14.3: yp ← yp + (nr/dr)*diff[i][k]
+15: EndFor
+16: Print x,yp
+17: Stop
