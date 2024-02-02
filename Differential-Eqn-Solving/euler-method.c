@@ -26,7 +26,7 @@ int main ()
         i++;
     }
 
-    printf("y(%.2lf) = %.3lf\n", a, y[i]);
+    printf("The value of y at x = %.2lf is %.4lf\n", a, y[i]);
 
     return 0;
 }
