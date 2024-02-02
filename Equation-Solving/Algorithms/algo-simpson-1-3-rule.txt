@@ -1,4 +1,4 @@
-           Algorithm-Gauss Elimination Method
+           Algorithm-Simpson 1/3rd Rule
 
 Input : lower bound: a,upper bound: b,number of subintervals: n
 Output : Display the value after integration.
