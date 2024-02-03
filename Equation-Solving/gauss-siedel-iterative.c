@@ -15,7 +15,7 @@ int main (void)
     double x[N_EQ]; // x is inital guess, and will be the solution
     int i = 0;
 
-    printf("*** Gauss Seidel Method ***\n");
+    printf("*** Gauss Seidel Iterative Method ***\n");
     printf("The general format is ax + by + cz = d\n");
     printf("Enter the values of a, b, c, d (space-seperated) for each equation\n");
     for (i = 0; i < N_EQ; i++)
