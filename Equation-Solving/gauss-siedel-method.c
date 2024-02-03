@@ -95,6 +95,8 @@ void gaussSeidel(double eqn[N_EQ][N_EQ + 1], double x[N_EQ], int maxIterations, 
         // Go through each equation
         for (i = 0; i < N_EQ; i++)
         {
+            // x = (1/a)(d - by - cz)
+            // y = (1/b)(d - ax - cz) ...
             sum = eqn[i][N_EQ]; // The constant term in the equation
 
             // Calculate the sum of the other terms
