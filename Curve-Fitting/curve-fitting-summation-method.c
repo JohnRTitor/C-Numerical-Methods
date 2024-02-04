@@ -27,6 +27,6 @@ int main()
     a = ((sumx2 * sumy - sumx * sumxy) * 1.0 / (n * sumx2 - sumx * sumx) * 1.0);
     b = ((n * sumxy - sumx * sumy) * 1.0 / (n * sumx2 - sumx * sumx) * 1.0);
     
-    printf("\nThe line is Y=%3.3f +%3.3f X", a, b);
+    printf("The line is Y = (%3.3f)X + %3.3f \n", a, b);
     return 0;
 }
