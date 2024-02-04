@@ -2,10 +2,11 @@
 
 Input:- 
     1. Differential equation (dy/dx) or F(x, y)
-    2: initial values of x[0] and y[0]
-    3: step length (h)
-    4: F(a) to calculate the value at
+    2. initial values of x[0] and y[0]
+    3. step length (h)
+    4. F(a) to calculate the value at
 Output:- The value of dy/dx at x = a
+Data Structure:- One Dimensional Array
 
 Steps:-
 
