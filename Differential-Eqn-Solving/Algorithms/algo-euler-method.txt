@@ -1,0 +1,23 @@
+            Algo - Euler's Method
+
+Input: x,y - Initial values of x and dY_dX
+       h - Step length
+       a - value to calculate
+Output: Display the value of y at x=a
+Data Structure: One dimensional array of elements
+Discussion: here, F is a function that is equivalent to its mathematical equation
+
+Steps:
+
+1: Start
+2: Read x,y
+3: Read h
+4: Read a
+5: i ← 0
+6: While x[i] < a double
+    6.1: y[i+1] ← y[i] + h*F(x[i],y[i])
+    6.2: x[i+1] ← x[i] + h
+    6.3: i ← i+1
+7: EndWhile
+8: Print a,y[i]
+9: Stop
