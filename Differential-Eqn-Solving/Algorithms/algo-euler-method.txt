@@ -17,7 +17,7 @@ Steps:-
 5: Read h
 6: Print "Enter the value of a to calculate: "
 7: Read a
-8: i = 0
+8: i ← 0
 9: While x[i] < a do
     9.1: y[i + 1] ← y[i] + h * F(x[i], y[i])
     9.2: x[i + 1] ← x[i] + h
