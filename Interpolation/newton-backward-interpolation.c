@@ -1,65 +1,86 @@
 #include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
 
-// Function to calculate the backward difference table
-void calculate_backward_difference_table(float y[], int n, float b[][n]) {
-    int i, j;
+double nCr(int n, int r);
+long long factorial(int n);
 
-    // Copy the y array to the first column of the table
-    for (i = 0; i < n; i++) {
-        b[i][0] = y[i];
-    }
+#define MAX_SIZE 25
 
-    // Calculate the backward difference table
-    for (j = 1; j < n; j++) {
-        for (i = n - 1; i >= j; i--) {
-            b[i][j] = b[i][j - 1] - b[i - 1][j - 1];
+int main ()
+{
+    double x[MAX_SIZE], y[MAX_SIZE], table[MAX_SIZE][MAX_SIZE];
+    int n[MAX_SIZE];
+    int i, order;
+    double a, v, answer;
+
+    printf("Enter the values of x[i] and y[i]: (type -999 -999 to stop) \n");
+    i = 0;
+    while (true)
+    {
+        printf("%d: ", i);
+        scanf("%lf %lf", &x[i], &y[i]);
+        if (x[i] == -999 && y[i] == -999)
+        {
+            n[0] = i; // no of y terms
+            break;
         }
-    }
-}
-
-// Function to calculate the interpolation using Newton's backward formula
-float interpolate_backward(float x, float x0, float h, int n, float b[][n]) {
-    float result = b[n - 1][0];
-    float term = (x - x0) / h;
-
-    for (int i = 1; i < n; i++) {
-        result += (term * b[n - 1][i]) / i;
-        term *= (term + 1 - i) / i;
+        i++;
     }
 
-    return result;
-}
-
-int main() {
-    int n;
-
-    // Input the number of data points
-    printf("Enter the number of data points: ");
-    scanf("%d", &n);
-
-    float x[n], y[n];
-
-    // Input the data points
-    printf("Enter the data points:\n");
-    for (int i = 0; i < n; i++) {
-        printf("x%d y%d: ", i, i);
-        scanf("%f %f", &x[i], &y[i]);
-    }
-
-    // Input the value to interpolate
-    float xValue;
     printf("Enter the value to interpolate: ");
-    scanf("%f", &xValue);
+    scanf("%lf", &a);
 
-    // Calculate backward difference table
-    float b[n][n];
-    calculate_backward_difference_table(y, n, b);
+    // first copy values of y to table[0]
+    order = 0; // current order is zero since we are copying y
+    for (i = 0; i < n[0]; i++)
+    {
+        table[0][i] = y[i];
+    }
+    // then calculate the table
+    order = 1; // start from the first order
+    while (true)
+    {
+        n[order] = 0; // initial no of terms
+        for (i = 0; i < n[order - 1] - 1; i++)
+        {
+            table[order][i] = table[order - 1][i + 1] - table[order - 1][i];
+            n[order]++; // increase the no of terms in the current order
+        }
+        // after calculating the table, check if all the terms are same
+        // or if there is only one term left
+        if (n[order] == 1)
+        {
+            break;
+        }
+        // increase the order and calculate the next column
+        order++;
+    }
 
-    // Calculate interpolated value using Newton's backward formula
-    float result = interpolate_backward(xValue, x[0], x[1] - x[0], n, b);
+    // now we have the table, we can calculate the value of f(a)
+    answer = 0;
+    // calculate v = a - x[n] / h
+    v = (a - x[n[0] - 1]) / (x[1] - x[0]);
+    answer = table[0][n[0] - 1];
+    for (i = 1; i <= order; i++)
+    {
+        double temp_answer = 1;
+        for (int j = 0; j < i; j++)
+        {
+            temp_answer *= (v + j);
+        }
+        answer += (temp_answer / factorial(i)) * table[i][n[i] - 1];
+    }
 
-    // Display the result
-    printf("Interpolated value at x = %.2f is %.6f\n", xValue, result);
-
+    printf("The value of f(%.2lf) is %.4lf\n", a, answer);
     return 0;
+}
+
+long long factorial (int n)
+{
+    if (n == 0)
+    {
+        return 1;
+    }
+    return n * factorial(n - 1);
 }
