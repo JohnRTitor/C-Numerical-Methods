@@ -1,4 +1,4 @@
-           Algorithm-Newton Raphson Method
+                Algorithm - Newton Raphson Method
 
 Input:- 
     1. The initial guess of the root (initial_guess)
