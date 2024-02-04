@@ -10,7 +10,7 @@ int main() {
     scanf("%d", &n);
 
     printf("\nEnter the values in form x,y:\n");
-    for (i = 0; i <= n; i++)
+    for (i = 0; i < n; i++)
         scanf("%f %f", &ax[i], &ay[i]);
     printf("\nEnter the value of x for which the value of y is wanted: \n");
     scanf("%f", &x);
