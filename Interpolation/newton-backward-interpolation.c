@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <math.h>
 
-double nCr(int n, int r);
 long long factorial(int n);
 
 #define MAX_SIZE 25
