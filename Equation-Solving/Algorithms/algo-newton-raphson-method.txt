@@ -1,52 +1,32 @@
            Algorithm-Newton Raphson Method
 
-Input : A initial guess of the root.
-Output : Display the value of root of the equation.
+Input:- 
+    1. The initial guess of the root (initial_guess)
+    2. The function F(x)
+Output:-
+    1. The root of the equation F(x)
+    2. If the root is not found with the initial guess, then a message is printed
 
-Steps :
+Steps:-
 
 1: Start
 2: Read initial_guess
-3: root ← newton_raphson(initial_guess)
-4: Print root
-5: Stop
-
-            Procedure function(x)
-
-Steps :
-
-1: Start procedure
-2: Return x*x - 16 //substitute it with given function to be integrated.
-3: Stop procedure
-
-           Procedure derivative(x)
-
-Steps :
-
-1: Start procedure
-2: Return 2*x //substitute it with given function's derivative to be integrated.
-3: Stop procedure
-
-           Procedure newton_raphson(initial_guess)
-
-Steps :
-
-1: Start procedure
-2: x0 ← initial_guess
-3: For i=0 to 99 do
-    3.1: fx ← function(x0)
-    3.2: dfx ← derivative(x0)
-    3.3: If |x| < epsilon then //epsilon = 1e-6
-        3.3.1: Print "Error: Division by zero"
-        3.3.2: Exit
-    3.4: EndIf
-    3.5: x1 ← x0 - fx/dfx
-    3.6: If |x1-x0| < epsilon then
-        3.6.1: Return x1
-    3.7: EndIf
-    3.8: x0 ← x1
-4: EndFor
-5: Print "Maximum number of iterations reached."
-6: Return
-7: Stop Procedure
+3: x0 ← initial_guess
+4: For i=0 to MAX_ITERATION do // MAX_ITERATION is defined by the user
+    4.1: fx ← F(x0)
+    4.2: dfx ← Fbar(x) //derivative of F(x)
+    4.3: If |x| < epsilon then //epsilon = 1e-6
+        4.3.1: Print "Error: Division by zero"
+        4.3.2: Exit
+    4.4: EndIf
+    4.5: x1 ← x0 - fx/dfx
+    4.6: If |x1-x0| < epsilon then
+        4.6.1: Print x1, " is the root of the equation."
+        4.6.2: Exit
+    4.7: EndIf
+    4.8: x0 ← x1
+5: EndFor
+// we reach here if the method does not converge
+6: Print "Maximum number of iterations reached."
+7: Stop
 

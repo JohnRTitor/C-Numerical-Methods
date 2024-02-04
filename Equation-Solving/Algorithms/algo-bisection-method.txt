@@ -18,9 +18,9 @@ Steps:-
 6: if F(a) * F(b) > 0 then
     6.1: Print "Invalid interval, no sign change of F(x) between interval bounds"
     6.2: Exit
-7: Else If F(a) == 0 then
+7: Else If F(a) = 0 then
     7.1: Print "The root = ", a
-8: Else If F(b) == 0 then
+8: Else If F(b) = 0 then
     8.1: Print "The root = ", b
 10: EndIf
 
@@ -31,7 +31,7 @@ Steps:-
 
 13: For i=1 to MAX_ITERATION do
     13.1: c ← (a + b) / 2
-    13.2: If F(c) == 0 or |a - b| < 1e-6 then
+    13.2: If F(c) = 0 or |a - b| < 1e-6 then
         13.2.1: Print "The root = ", c
         13.2.2: Exit
     13.3: Else If F(a) * F(c) < 0 then
