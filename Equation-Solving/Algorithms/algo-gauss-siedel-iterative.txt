@@ -1,0 +1,72 @@
+                Algorithm - Gauss Seidel Iterative Method
+
+Input:- Coefficients of the equations
+Output:- Display the solution of the system of equations
+Data Structure:-
+                Two dimensional array (eqn) for storing the coefficients of the equations
+                And one dimensional array (x) for storing the solution of the equations
+
+Steps:-
+
+1: Start
+2: For i = 0 to 3 do
+    2.1: read_equation(eqn[i])
+3: EndFor
+4: If is_diagonally_dominant(eqn) = false then
+    4.1: Print "The given system of equations is not diagonally dominant"
+    4.2: Stop
+5: EndIf
+6: gauss_seidel(eqn,x,100,0.0001)
+7: Print "x is ", x[o], "y is ", x[1], "z is ". x[2]
+8: Stop
+
+            Procedure read_equation(coeff)
+
+1: Begin Procedure
+2: Enter the coefficients of the equation a, b, c and d
+3: For i = 0 to 3 do
+    3.1: Read coeff[i]
+4: EndFor
+5: End Procedure
+
+            Procedure is_diagonally_dominant(eqn)
+
+1: Start Procedure
+2: For i = 0 to 3 do
+    2.1: sum ← 0
+    2.2: For j = 0 to 3 do
+        2.2.1: If i ≠ j then
+            2.2.1.1: sum ← sum + |eqn[i][j]|
+        2.2.2: EndIf
+    2.3: EndFor
+    2.4: If |eqn[i][i]| < sum then
+        2.4.1: Return false
+    2.5: EndIf
+3: EndFor
+4: Return true
+5: End Procedure
+
+            Procedure gauss_seidel(eqn[3][4], x[3], max_iterations, tolerance)
+
+1: Begin Procedure
+2: For i = 0 to 3 do
+    2.1: x[i] ← 0
+3: EndFor
+4: For k = 0 to max_iterations do
+    4.1: error ← 0
+    4.2: For i = 0 to 3 do
+        4.2.1: sum ← eqn[i][3]
+        4.2.2: For j = 0 to 3 do
+            4.2.2.1: If j ≠ i then
+                4.2.2.1.1: sum ← sum - eqn[i][j]*x[j]
+            4.2.2.2: EndIf
+        4.2.3: EndFor
+        4.2.4: old ← x[i]
+        4.2.5: x[i] ← sum/eqn[i][i]
+        4.2.6: error ← max(error, |old-x[i]|)
+    4.3: EndFor
+    4.4: If error < tolerance then
+        4.4.1: Exit
+    4.5: EndIf
+5: EndFor
+6: End Procedure
