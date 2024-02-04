@@ -8,14 +8,14 @@ int main()
     int n, i, x[MAX_SIZE], y[MAX_SIZE];
     int sumx = 0, sumy = 0, sumxy = 0, sumx2 = 0;
     double a, b;
-    
+
     printf("How many data points do you have? ");
     scanf("%d", &n);
     printf("\n Enter the values of x, y: \n");
     for (i = 0; i < n; i++)
     {
         printf("%d: ", i);
-        scanf("%lf %lf", &x[i], &y[i]);
+        scanf("%d %d", &x[i], &y[i]);
     }
     for (i = 0; i < n; i++)
     {
