@@ -13,6 +13,7 @@ int main ()
     int i, order;
     double a, v, answer;
 
+    printf("*** Newton Backward Interpolation ***\n");
     printf("Enter the values of x[i] and y[i]: (type -999 -999 to stop) \n");
     i = 0;
     while (true)
