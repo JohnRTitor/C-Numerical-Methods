@@ -37,15 +37,15 @@ Steps:-
     12.6: order ← order + 1
 13: EndWhile
 14: answer ← 0
-15: v ← (a - x[n[0] - 1]) / (x[1] - x[0])
-16: answer ← table[0][n[0] - 1]
+15: v ← (a - x[0]) / (x[1] - x[0])
+16: answer ← table[0][0]
 17: For i = 1 to order do
     17.1: temp_answer ← 1
     17.2: For j = 0 to i - 1 do
-        17.2.1: temp_answer ← temp_answer * (v + j)
+        17.2.1: temp_answer ← temp_answer * (v - j)
         17.2.2: j ← j + 1
     17.3: EndFor
-    17.4: answer ← answer + (temp_answer / factorial(i)) * table[i][n[i] - 1]
+    17.4: answer ← answer + (temp_answer / factorial(i)) * table[i][0]
     17.5: i ← i + 1
 18: EndFor
 19: Print "F evaluated at ", a, " is ", answer
