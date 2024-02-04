@@ -9,44 +9,41 @@ Data Structure:-
 Steps:-
 
 1: Start
-2: For i = 0 to 3 do
-    2.1: read_equation(eqn[i])
-3: EndFor
-4: If is_diagonally_dominant(eqn) = false then
-    4.1: Print "The given system of equations is not diagonally dominant"
-    4.2: Stop
-5: EndIf
-6: gauss_seidel(eqn,x,100,0.0001)
-7: Print "x is ", x[o], "y is ", x[1], "z is ". x[2]
-8: Stop
+2: Print "Gauss Seidel Iterative Method"
+3: Print "The general format is ax + by + cz = d"
+4: Print "Enter the values of a, b, c, d (space-seperated) for each equation"
+5: For i = 0 to N_EQ do // no of equations defined by the user
+    5.1: Print "Equation ", i+1, ": "
+    5.2: For j = 0 to N_EQ + 1 do
+        5.2.1: Read eqn[i][j]
+    5.3: EndFor
+6: EndFor
+7: If isDiagonallyDominant(eqn) then
+    7.1: Print "Equations are not diagonally dominant. Gauss Seidel method may not converge."
+    7.2: Stop
+8: EndIf
+9: gaussSeidel(eqn, x, 100, 0.0001) // 100 is the maximum number of iterations, 0.0001 is the tolerance
+10: Print  "x is ", x[o], "y is ", x[1], "z is ". x[2]
+11: Stop
 
-            Procedure read_equation(coeff)
+                Procedure isDiagonallyDominant(eqn)
 
 1: Begin Procedure
-2: Enter the coefficients of the equation a, b, c and d
-3: For i = 0 to 3 do
-    3.1: Read coeff[i]
-4: EndFor
-5: End Procedure
-
-            Procedure is_diagonally_dominant(eqn)
-
-1: Start Procedure
-2: For i = 0 to 3 do
+2: For i = 0 to N_EQ do
     2.1: sum ← 0
     2.2: For j = 0 to 3 do
         2.2.1: If i ≠ j then
             2.2.1.1: sum ← sum + |eqn[i][j]|
         2.2.2: EndIf
     2.3: EndFor
-    2.4: If |eqn[i][i]| < sum then
-        2.4.1: Return false
-    2.5: EndIf
+    2.4.4: If |eqn[i][i]| < sum then
+        2.4.4.1: Return false
+    2.4.4: EndIf
 3: EndFor
 4: Return true
 5: End Procedure
 
-            Procedure gauss_seidel(eqn[3][4], x[3], max_iterations, tolerance)
+                Procedure gaussSeidel(eqn, x, max_iterations, tolerance)
 
 1: Begin Procedure
 2: For i = 0 to 3 do
