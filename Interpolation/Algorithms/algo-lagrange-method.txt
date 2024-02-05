@@ -1,0 +1,37 @@
+                Algorithm - Lagrange Interpolation Method
+
+Input:-
+        1. x,y - Arrays to store the values of x and y
+        2. a - value of x for which y is to be calculated.
+Output:- Display the value of y at x=a
+Data Structure:- One Dimensional Array x[], y[] and s[]
+
+Steps:-
+
+1: Start
+2: Print "Enter the number of data points: "
+3: Read n
+4: Print "Enter the data points: (x, y):
+5: For i = 0 to n do
+    5.1: Read x[i], y[i]
+    5.2: i ← i + 1
+6: EndFor
+7: Print "Enter the value of x for which y is to be calculated: "
+8: Read a
+9: For i = 0 to n do
+    9.1: s[i] ← 1
+    9.2: For j = 0 to n do
+        9.2.1: If i ≠ j then
+            9.2.1.1: s[i] ← s[i] * (a - x[j])/(x[i] - x[j])
+        9.2.2: EndIf
+        9.2.3: j ← j + 1
+    9.3: EndFor
+    9.4: i ← i + 1
+10: EndFor
+11: fA ← 0
+12: For i = 0 to n do
+    12.1: fA ← fA + y[i] * s[i]
+    12.2: i ← i + 1
+13: EndFor
+14: Print "F evaluated at ", a, " is ", fA
+15: Stop

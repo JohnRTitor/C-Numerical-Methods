@@ -1,0 +1,74 @@
+                Procedure - Gauss Jacobi Iterative Method
+
+Input:- The coefficients of the equations in the form ax + by + cz = d, for three equations.
+Output:- The solution of the equations, x, y, z.
+Data Structure:-
+                Two dimensional array to store the coefficients of the equations (eqn)
+                One dimensional array to store the solution (x)
+
+Steps:-
+
+1: Start
+2: Print "Gauss Jacobi Iterative Method"
+3: Print "The general format is ax + by + cz = d"
+4: Print "Enter the values of a, b, c, d (space-seperated) for each equation"
+5: For i = 0 to N_EQ do // no of equations defined by the user
+    5.1: Print "Equation ", i+1, ": "
+    5.2: For j = 0 to N_EQ + 1 do
+        5.2.1: Read eqn[i][j]
+    5.3: EndFor
+6: EndFor
+7: If isDiagonallyDominant(eqn) then
+    7.1: Print "Equations are not diagonally dominant. Gauss Jacobi method may not converge."
+    7.2: Stop
+8: EndIf
+9: gaussJacobi(eqn, x, 100, 0.0001) // 100 is the maximum number of iterations, 0.0001 is the tolerance
+10: Print  "x is ", x[o], "y is ", x[1], "z is ". x[2]
+11: Stop
+
+
+                Procedure isDiagonallyDominant(eqn)
+
+1: Begin Procedure
+2: For i = 0 to N_EQ do
+    2.1: sum ← 0
+    2.2: For j = 0 to 3 do
+        2.2.1: If i ≠ j then
+            2.2.1.1: sum ← sum + |eqn[i][j]|
+        2.2.2: EndIf
+    2.3: EndFor
+    2.4.4: If |eqn[i][i]| < sum then
+        2.4.4.1: Return false
+    2.4.4: EndIf
+3: EndFor
+4: Return true
+5: End Procedure
+
+                Procedure gaussJacobi(eqn, x, maxIterations, tolerance)
+
+1: Start Procedure
+2: For i = 0 to N_EQ do
+    2.1: old[i] ← 0
+    2.2: x[i] ← 0
+3: EndFor
+4: For k = 0 to maxIterations do
+    4.1: error ← 0
+    4.2: For i = 0 to N_EQ - 1 do
+        4.2.1: old[i] ← x[i]
+    4.3: EndFor
+    4.4: For i = 0 to N_EQ - 1 do
+        4.4.1: sum ← eqn[i][N_EQ]
+        4.4.2: For j = 0 to N_EQ do
+            4.4.2.1: If j ≠ i then
+                4.4.2.1.1: sum ← sum - eqn[i][j] * old[j]
+            4.4.2.2: EndIf
+        4.4.3: EndFor
+        4.4.4: x[i] ← sum / eqn[i][i]
+        4.4.5: error ← max(error, |old[i] - x[i]|)
+    4.5: EndFor
+    4.6: If error < tolerance then
+        4.6.1: Exit
+    4.7: EndIf
+5: EndFor
+6: Stop
+

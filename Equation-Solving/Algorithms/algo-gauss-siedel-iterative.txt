@@ -1,0 +1,69 @@
+                Algorithm - Gauss Seidel Iterative Method
+
+Input:- Coefficients of the equations
+Output:- Display the solution of the system of equations
+Data Structure:-
+                Two dimensional array (eqn) for storing the coefficients of the equations
+                And one dimensional array (x) for storing the solution of the equations
+
+Steps:-
+
+1: Start
+2: Print "Gauss Seidel Iterative Method"
+3: Print "The general format is ax + by + cz = d"
+4: Print "Enter the values of a, b, c, d (space-seperated) for each equation"
+5: For i = 0 to N_EQ do // no of equations defined by the user
+    5.1: Print "Equation ", i+1, ": "
+    5.2: For j = 0 to N_EQ + 1 do
+        5.2.1: Read eqn[i][j]
+    5.3: EndFor
+6: EndFor
+7: If isDiagonallyDominant(eqn) then
+    7.1: Print "Equations are not diagonally dominant. Gauss Seidel method may not converge."
+    7.2: Stop
+8: EndIf
+9: gaussSeidel(eqn, x, 100, 0.0001) // 100 is the maximum number of iterations, 0.0001 is the tolerance
+10: Print  "x is ", x[o], "y is ", x[1], "z is ". x[2]
+11: Stop
+
+                Procedure isDiagonallyDominant(eqn)
+
+1: Begin Procedure
+2: For i = 0 to N_EQ do
+    2.1: sum ← 0
+    2.2: For j = 0 to 3 do
+        2.2.1: If i ≠ j then
+            2.2.1.1: sum ← sum + |eqn[i][j]|
+        2.2.2: EndIf
+    2.3: EndFor
+    2.4.4: If |eqn[i][i]| < sum then
+        2.4.4.1: Return false
+    2.4.4: EndIf
+3: EndFor
+4: Return true
+5: End Procedure
+
+                Procedure gaussSeidel(eqn, x, max_iterations, tolerance)
+
+1: Begin Procedure
+2: For i = 0 to 3 do
+    2.1: x[i] ← 0
+3: EndFor
+4: For k = 0 to max_iterations do
+    4.1: error ← 0
+    4.2: For i = 0 to 3 do
+        4.2.1: sum ← eqn[i][3]
+        4.2.2: For j = 0 to 3 do
+            4.2.2.1: If j ≠ i then
+                4.2.2.1.1: sum ← sum - eqn[i][j]*x[j]
+            4.2.2.2: EndIf
+        4.2.3: EndFor
+        4.2.4: old ← x[i]
+        4.2.5: x[i] ← sum/eqn[i][i]
+        4.2.6: error ← max(error, |old-x[i]|)
+    4.3: EndFor
+    4.4: If error < tolerance then
+        4.4.1: Exit
+    4.5: EndIf
+5: EndFor
+6: End Procedure

@@ -1,0 +1,32 @@
+                Algorithm - Newton Raphson Method
+
+Input:- 
+    1. The initial guess of the root (initial_guess)
+    2. The function F(x)
+Output:-
+    1. The root of the equation F(x)
+    2. If the root is not found with the initial guess, then a message is printed
+
+Steps:-
+
+1: Start
+2: Read initial_guess
+3: x0 ← initial_guess
+4: For i=0 to MAX_ITERATION do // MAX_ITERATION is defined by the user
+    4.1: fx ← F(x0)
+    4.2: dfx ← Fbar(x) //derivative of F(x)
+    4.3: If |x| < epsilon then //epsilon = 1e-6
+        4.3.1: Print "Error: Division by zero"
+        4.3.2: Exit
+    4.4: EndIf
+    4.5: x1 ← x0 - fx/dfx
+    4.6: If |x1-x0| < epsilon then
+        4.6.1: Print x1, " is the root of the equation."
+        4.6.2: Exit
+    4.7: EndIf
+    4.8: x0 ← x1
+5: EndFor
+// we reach here if the method does not converge
+6: Print "Maximum number of iterations reached."
+7: Stop
+

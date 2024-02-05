@@ -1,0 +1,27 @@
+                Algorithm - Euler's Method
+
+Input:- 
+    1. Differential equation (dy/dx) or F(x, y)
+    2. initial values of x[0] and y[0]
+    3. step length (h)
+    4. F(a) to calculate the value at
+Output:- The value of dy/dx at x = a
+Data Structure:- One Dimensional Array
+
+Steps:-
+
+1: Start
+2: Print "Enter the initial values of x and y: "
+3: Read x[0], y[0]
+4: Print "Enter the step length (h): "
+5: Read h
+6: Print "Enter the value of a to calculate: "
+7: Read a
+8: i ← 0
+9: While x[i] < a do
+    9.1: y[i + 1] ← y[i] + h * F(x[i], y[i])
+    9.2: x[i + 1] ← x[i] + h
+    9.3: i ← i + 1
+10: EndWhile
+11: Print "The value of y at x = ", a, " is ", y[i]
+12: Stop

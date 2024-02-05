@@ -1,0 +1,61 @@
+                Algorithm - Newton Backward Interpolation
+
+Input:- 
+        1. n - Number of observations/data points
+        2. x, y - One dimensional arrays for storing values of x and y respectively.
+        3. a - The value to be interpolated
+Output:- Display the value of F at the given point after interpolation
+Data Structure:- One dimensional arrays of elements
+
+Steps:-
+
+1: Start
+2: Print "Enter the number of data points: "
+3: Read n[0]
+4: Print "Enter the data points: (x, y):
+5: For i = 0 to n[0] do
+    5.1: Read x[i], y[i]
+    5.2: i ← i + 1
+6: EndFor
+7: Print "Enter the value of x for which y is to be calculated: "
+8: Read a
+9: For i = 0 to n[0] - 1 do
+    9.1: table[0][i] ← y[i]
+    9.2: i ← i + 1
+10: EndFor
+11: order ← 1
+12: While (true) do
+    12.1: n[order] ← 0
+    12.2: For i = 0 to n[order-1] - 2 do
+        12.2.1: table[order][i] ← table[order-1][i+1] - table[order-1][i]
+        12.2.2: n[order] ← n[order] + 1
+        12.2.3: i ← i + 1
+    12.3: EndFor
+    12.4: If n[order] = 1 then
+        12.4.1: Exit
+    12.5: EndIf
+    12.6: order ← order + 1
+13: EndWhile
+14: answer ← 0
+15: v ← (a - x[n[0] - 1]) / (x[1] - x[0])
+16: answer ← table[0][n[0] - 1]
+17: For i = 1 to order do
+    17.1: temp_answer ← 1
+    17.2: For j = 0 to i - 1 do
+        17.2.1: temp_answer ← temp_answer * (v + j)
+        17.2.2: j ← j + 1
+    17.3: EndFor
+    17.4: answer ← answer + (temp_answer / factorial(i)) * table[i][n[i] - 1]
+    17.5: i ← i + 1
+18: EndFor
+19: Print "F evaluated at ", a, " is ", answer
+20: Stop
+
+                Procedure factorial(n)
+
+1: Begin Procedure
+2: If n = 0 then
+    2.1: Return 1
+3: EndIf
+4: return n * factorial(n - 1)
+5: End Procedure

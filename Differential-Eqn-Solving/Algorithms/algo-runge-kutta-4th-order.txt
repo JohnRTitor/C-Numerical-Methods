@@ -1,0 +1,29 @@
+                Algorithm - Runge-Kutta Method (4th Order)
+
+Input:-
+    1. The initial value of x and y (x[0], y[0])
+    2. The step length (h)
+    3. The value of x at which y is to be calculated (a)
+
+Output:- The value of y at x = a
+
+Steps:-
+1: Start
+2: Print "Enter the initial values of x and y: "
+3: Read x[0], y[0]
+4: Print "Enter the step length (h): "
+5: Read h
+6: Print "Enter the value of a to calculate: "
+7: Read a
+8: i ← 0
+9: While x[i] < a do
+    9.1: d1 ← h * F(x[i], y[i])
+    9.2: d2 ← h * F(x[i] + h/2, y[i] + d1/2)
+    9.3: d3 ← h * F(x[i] + h/2, y[i] + d2/2)
+    9.4: d4 ← h * F(x[i] + h, y[i] + d3)
+    9.5: y[i + 1] ← y[i] + (d1 + 2*d2 + 2*d3 + d4)/6
+    9.6: x[i + 1] ← x[i] + h
+    9.7: i ← i + 1
+10: EndWhile
+11: Print "The value of y at x = ", a, " is ", y[i]
+12: Stop

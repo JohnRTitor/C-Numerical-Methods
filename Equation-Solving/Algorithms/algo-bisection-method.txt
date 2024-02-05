@@ -1,0 +1,45 @@
+                Algorithm - Bisection Method
+
+Input:- 
+    1. The initial interval [a, b]
+    2. The function F(x)
+Output:-
+    1. The root of the function F(x) in the interval [a, b]
+    2. If the root is not found in the interval, then a message is printed
+
+Steps:-
+
+1: Start
+2: Print "Enter the initial interval [a, b]: "
+3: Read a, b
+4: Print "Enter the function F(x): "
+5: Read F(x)
+
+6: if F(a) * F(b) > 0 then
+    6.1: Print "Invalid interval, no sign change of F(x) between interval bounds"
+    6.2: Exit
+7: Else If F(a) = 0 then
+    7.1: Print "The root = ", a
+8: Else If F(b) = 0 then
+    8.1: Print "The root = ", b
+10: EndIf
+
+11: If F(a) > F(b) then
+// Check and swap intervals if necessary
+    11.1: swap(a, b)
+12: EndIf
+
+13: For i=1 to MAX_ITERATION do
+    13.1: c ← (a + b) / 2
+    13.2: If F(c) = 0 or |a - b| < 1e-6 then
+        13.2.1: Print "The root = ", c
+        13.2.2: Exit
+    13.3: Else If F(a) * F(c) < 0 then
+        13.3.1: b ← c
+    13.4: Else
+        13.4.1: a ← c
+    13.5: EndIf
+14: EndFor
+
+15: Print "Maximum number of iterations exceeded. No root found."
+16: Stop
