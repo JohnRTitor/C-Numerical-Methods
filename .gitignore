@@ -27,4 +27,23 @@ launch.json
 *.exe
 *.out
 
+## IGNORE these devenv related files
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+## DON'T IGNORE these devenv related files
+!.envrc
+!devenv.lock
+!devenv.nix
+!devenv.yaml
+
+
 # Ignore files larger than 100M
