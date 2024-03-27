@@ -1,16 +1,12 @@
-# Ignore everything
-*
+# Devenv
+.devenv*
+devenv.local.nix
 
-# But don't ignore folders
-!*/
+# direnv
+.direnv
 
-# But don't ignore these types of files
-!*.c
-!*.cpp
-!*.h
-!*.txt
-!*.hpp
-!*.md
+# pre-commit
+.pre-commit-config.yaml
 
 !Makefile
 
@@ -26,24 +22,3 @@ launch.json
 # Ignore executables
 *.exe
 *.out
-
-## IGNORE these devenv related files
-
-# Devenv
-.devenv*
-devenv.local.nix
-
-# direnv
-.direnv
-
-# pre-commit
-.pre-commit-config.yaml
-
-## DON'T IGNORE these devenv related files
-!.envrc
-!devenv.lock
-!devenv.nix
-!devenv.yaml
-
-
-# Ignore files larger than 100M
